@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recipe API Call</title>
+  <script src="script.js"></script>
+</head>
+<style>
+    li{
+        list-style-type: none;
+        font-size: 3vh;
+        margin: 10px;
+    }
+</style>
+<body>
+  <h1>Gimme dem recipes plz</h1>
+  <label for="ingredient">Enter an ingredient, any ingredient:</label>
+  <input type="text" id="ingredient" placeholder="e.g., bok choi">
+  <button onclick="fetchRecipes()">List me some recipes please</button>
+  <div id="recipeList">
+  </div>
+</body>
+</html>

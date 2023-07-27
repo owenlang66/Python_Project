@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<style>
+    .navbar.navbar-expand-sm.navbar-light.bg-light {
+        width: 100%;
+    }
+
+    h1 {
+        font-family: cursive;
+    }
+
+
+    #navbar {
+        background-color: #47d153;
+        height: 80px;
+        box-shadow: 0px 12px 5px black;
+    }
+
+    .nav-link {
+        color: white;
+    }
+
+    .nav-item {
+        margin: 15px;
+        font-family: cursive;
+    }
+
+    h2{
+        font-family: cursive;
+        font-size: 5vh;
+        text-align: center;
+        margin: 15px;
+    }
+
+    .center_form{
+        display: flex;
+        justify-content: center;
+    }
+
+    form{
+        text-align: center;
+        margin: 10px;
+        padding: 4px;
+        border: 2px solid black;
+        max-width: 200px;
+    }
+
+    input[type = text] {
+            width: 100%;
+            padding: 5px 10px;
+            margin: 10px 0;
+         }
+
+</style>
+<body>
+    <div class="container">
+        <nav class="navbar navbar-expand-sm navbar-light bg-light">
+            <div id="navbar" class="container-fluid">
+                <h1>Sustainable Surplus!</h1>
+                <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="collapsibleNavId">
+                    <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/listing/new">New Listing</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/dashboard">For Sale</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/api">Ingredient Search</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/user/logout">Logout</a>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+        <h2>Welcome {{ listing.user.first_name }}</h2>
+        <div class="center_form">
+            <form action="/listing/{{listing.id}}/update" method="POST">
+                <div>
+                    <input type="hidden" name="listing.user_id" value="{{session['user_id']}}">
+                    <div>
+                        <label for="item">Item: </label>
+                        <input type="text" name="item" value="{{listing.item}}">
+                    </div>
+                    <div>
+                        <label for="farm">Farm: </label>
+                        <input type="text" name="farm" value="{{listing.farm}}">
+                    </div>
+                    <div>
+                        <label for="date">Date Harvested: </label>
+                        <input type="date" name="date" value="{{listing.date}}">
+                    </div>
+                    <div>
+                        <label for="weight">Weight: </label>
+                        <input type="text" name="weight" value="{{listing.weight}}">
+                    </div>
+                </div>
+                <input type="submit" value="Edit listing">
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                {% for message in messages %}
+                <p>{{ message }}</p>
+                {% endfor %}
+                {% endif %}
+                {% endwith %}
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>
