@@ -37,7 +37,7 @@ document.getElementById('getRecipesBtn').addEventListener('click', async functio
     for (let index = 0; index < recipeData.length; index++) {
       var recipe = recipeData[index];
       var recipeName = recipe.recipe.label;
-      var recipeLink = recipe.recipe.url; // Previously "link" property, now using "url"
+      var recipeLink = recipe.recipe.url;
       var listItem = document.createElement('li');
       listItem.innerHTML = `<a href="${recipeLink}" target="_blank">${recipeName}</a>`;
       recipeList.appendChild(listItem);

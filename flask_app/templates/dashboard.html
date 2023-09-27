@@ -1,117 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
     <title>Dashboard</title>
 </head>
-<style>
-    .all_listings{
-        display: flex;
-        flex-wrap: wrap;
-    }
-
-    .listing {
-        border: 2px solid black;
-        margin: 10px;
-        min-width: 200px;
-        padding: 10px;
-    }
-
-    .navbar.navbar-expand-sm.navbar-light.bg-light {
-        width: 100%;
-    }
-
-    h1 {
-        font-family: cursive;
-    }
-
-    #navbar {
-        background-color: #47d153;
-        height: 80px;
-        box-shadow: 0px 12px 5px black;
-    }
-
-    .nav-link {
-        color: white;
-    }
-
-    .nav-item {
-        margin: 15px;
-        font-family: cursive;
-    }
-
-    h2{
-        font-family: cursive;
-        font-size: 5vh;
-        text-align: center;
-        margin: 5px 10px;
-    }
-
-    .photo{
-        max-width: 200px;
-    }
-
-</style>
-
-<body>
-    <div class="container">
-        <nav class="navbar navbar-expand-sm navbar-light bg-light">
-            <div id="navbar" class="container-fluid">
-                <h1>Sustainable Surplus!</h1>
-                <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="collapsibleNavId">
-                    <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link" href="/listing/new">New Listing</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/dashboard">For Sale</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/api">Ingredient Search</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/user/logout">Logout</a>
-                        </li>
-                    </ul>
-
-                </div>
+<body class="bg-gray-100">
+    <div class="container mx-auto">
+        <nav class="bg-green-500 shadow-lg">
+            <div class="container mx-auto py-4 flex justify-between items-center">
+                <h1 class="text-3xl font-semibold text-white">Sustainable Surplus!</h1>
+                <ul class="flex space-x-4">
+                    <li>
+                        <a class="bg-white text-green-500 hover:bg-green-200 py-2 px-4 rounded-full text-sm font-semibold transition duration-300 ease-in-out" href="/listing/new">New Listing</a>
+                    </li>
+                    <li>
+                        <a class="bg-white text-green-500 hover:bg-green-200 py-2 px-4 rounded-full text-sm font-semibold transition duration-300 ease-in-out" href="/dashboard">For Sale</a>
+                    </li>
+                    <li>
+                        <a class="bg-white text-green-500 hover:bg-green-200 py-2 px-4 rounded-full text-sm font-semibold transition duration-300 ease-in-out" href="/api">Ingredient Search</a>
+                    </li>
+                    <li>
+                        <a class="bg-white text-green-500 hover:bg-green-200 py-2 px-4 rounded-full text-sm font-semibold transition duration-300 ease-in-out" href="/user/logout">Logout</a>
+                    </li>
+                </ul>
             </div>
         </nav>
-        <h2>Welcome {{user.first_name}}</h2>
-        <div><a href="/listing/new">Create a new listing!</a></div>
-        
-        <div class="all_listings">
-
+        <h2 class="text-3xl font-semibold text-green-500 text-center mt-4">Welcome {{user.first_name}}</h2>
+        <div class="text-center mt-4">
+            <a href="/listing/new" class="text-green-500 hover:underline">Create a new listing!</a>
+        </div>
+        <div class="flex flex-wrap mt-8">
             {% for listing in listings %}
-            <div class="listing">
-                <div><img src="data:image/jpeg;base64, {{listing.photo.decode('utf-8')}}" alt="photo" class="photo"/></div>
-                <div>
-                    <span>{{ listing.item }}, grown nearby at {{ listing.farm }}</span>
-                </div>
-                <div>
-                    <span>Harvested by {{ listing.user.first_name }} on {{ listing.date }}</span>
-                </div>
-                <div>
-                    {% if user.id == listing.user_id %}
-                    <p><a href="/listing/{{listing.id}}/edit">Edit</a> | <a href="/listing/{{listing.id}}/delete">Delete</a></p>
-                    {% else %}
-                    <p><a href="/listing/{{listing.id}}/show">View listing</a></p>
-                    {% endif %}
+            <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-4">
+                <div class="bg-white border border-gray-300 rounded-lg p-4">
+                    <div class="text-center">
+                        <img src="data:image/jpeg;base64, {{listing.photo.decode('utf-8')}}" alt="photo" class="max-w-full max-h-[100px] mx-auto rounded-xl"/>
+                    </div>
+                    <div class="mt-4">
+                        <span class="text-lg font-semibold text-green-500">{{ listing.item }}, grown nearby at {{ listing.farm }}</span>
+                    </div>
+                    <div class="mt-2">
+                        <span class="text-gray-500">Harvested by {{ listing.user.first_name }} on {{ listing.date }}</span>
+                    </div>
+                    <div class="mt-4">
+                        {% if user.id == listing.user_id %}
+                        <p><a href="/listing/{{listing.id}}/edit" class="text-green-500 hover:underline">Edit</a> | <a href="/listing/{{listing.id}}/delete" class="text-red-500 hover:underline">Delete</a></p>
+                        {% else %}
+                        <p><a href="/listing/{{listing.id}}/show" class="text-green-500 hover:underline">View listing</a></p>
+                        {% endif %}
+                    </div>
                 </div>
             </div>
             {% endfor %}
         </div>
     </div>
-
 </body>
 </html>

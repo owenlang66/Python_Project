@@ -1,140 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
     <title>New listing</title>
 </head>
-<style>
-    .navbar.navbar-expand-sm.navbar-light.bg-light {
-        width: 100%;
-    }
-
-    h1 {
-        font-family: cursive;
-        text-align: center;
-        margin: 20px;
-    }
-
-    #navbar {
-        background-color: #47d153;
-        height: 80px;
-        box-shadow: 0px 12px 5px black;
-    }
-
-    .nav-link {
-        color: white;
-    }
-
-    .nav-item {
-        margin: 15px;
-        font-family: cursive;
-    }
-
-    h2 {
-        font-family: cursive;
-        font-size: 5vh;
-    }
-
-    form{
-        text-align: center;
-        margin: 10px;
-        padding: 4px;
-        border: 2px solid black;
-        max-width: 250px;
-    }
-
-    input[type = text] {
-            width: 100%;
-            padding: 5px 10px;
-            margin: 10px 0;
-         }
-
-    .center_form{
-        display: flex;
-        justify-content: center;
-    }
-
-    .pic{
-        margin: 10px;
-    }
-
-</style>
-
-<body>
-    <div class="container">
-        <nav class="navbar navbar-expand-sm navbar-light bg-light">
-            <div id="navbar" class="container-fluid">
-                <h1>Sustainable Surplus!</h1>
-                <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="collapsibleNavId">
-                    <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
-                        <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
-                            <li class="nav-item">
-                                <a class="nav-link" href="/listing/new">New Listing</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/dashboard">For Sale</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/api">Ingredient Search</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/user/logout">Logout</a>
-                            </li>
-                        </ul>
-                    </ul>
-
-                </div>
+<body class="bg-gray-100">
+    <div class="container mx-auto">
+        <nav class="bg-green-500 shadow-lg">
+            <div class="container mx-auto py-4 flex justify-between items-center">
+                <h1 class="text-3xl font-semibold text-white">Sustainable Surplus!</h1>
+                <ul class="flex space-x-4 lg:space-x-8">
+                    <li>
+                        <a class="bg-white text-green-500 hover:bg-green-200 py-2 px-4 rounded-full text-sm lg:text-base font-semibold transition duration-300 ease-in-out" href="/listing/new">New Listing</a>
+                    </li>
+                    <li>
+                        <a class="bg-white text-green-500 hover:bg-green-200 py-2 px-4 rounded-full text-sm lg:text-base font-semibold transition duration-300 ease-in-out" href="/dashboard">For Sale</a>
+                    </li>
+                    <li>
+                        <a class="bg-white text-green-500 hover:bg-green-200 py-2 px-4 rounded-full text-sm lg:text-base font-semibold transition duration-300 ease-in-out" href="/api">Ingredient Search</a>
+                    </li>
+                    <li>
+                        <a class="bg-white text-green-500 hover:bg-green-200 py-2 px-4 rounded-full text-sm lg:text-base font-semibold transition duration-300 ease-in-out" href="/user/logout">Logout</a>
+                    </li>
+                </ul>
             </div>
         </nav>
-        <h1>Create a New Listing!</h1>
-        <div class="center_form">
-            <form action="/listing/create" method="POST" enctype="multipart/form-data">
-                <div>
-                    <div>
-                        <label for="item">Item: </label>
-                        <input type="text" name="item">
+        <h1 class="text-3xl font-semibold text-green-500 text-center mt-4">Create a New Listing!</h1>
+        <div class="flex justify-center mt-8">
+            <form action="/listing/create" method="POST" enctype="multipart/form-data"
+                class="text-center mx-auto max-w-sm p-4 border border-black rounded-xl">
+                <div class="mb-4">
+                    <div class="mb-4">
+                        <label for="item" class="text-gray-600">Item:</label>
+                        <input type="text" name="item" class="block w-full rounded-md border-gray-300 shadow-sm">
                     </div>
-                    <div>
-                        <label for="farm">Farm: </label>
-                        <input type="text" name="farm">
+                    <div class="mb-4">
+                        <label for="farm" class="text-gray-600">Farm:</label>
+                        <input type="text" name="farm" class="block w-full rounded-md border-gray-300 shadow-sm">
                     </div>
-                    <div>
-                        <label for="date">Date Harvested: </label>
-                        <input type="date" name="date">
+                    <div class="mb-4">
+                        <label for="date" class="text-gray-600">Date Harvested:</label>
+                        <input type="date" name="date" class="block w-full rounded-md border-gray-300 shadow-sm">
                     </div>
-                    <div>
-                        <label for="weight">Weight: </label>
-                        <input type="text" name="weight">
+                    <div class="mb-4">
+                        <label for="weight" class="text-gray-600">Weight:</label>
+                        <input type="text" name="weight" class="block w-full rounded-md border-gray-300 shadow-sm">
                     </div>
-                    <div class="pic">
-                        <label for="photo">Photo:</label>
-                        <input type="file" name="photo">
+                    <div class="mb-4">
+                        <label for="photo" class="text-gray-600">Photo:</label>
+                        <input type="file" name="photo" class="block w-full rounded-md border-gray-300 shadow-sm">
                     </div>
                 </div>
                 <div>
                     <input type="hidden" name="user_id" value="{{session.user_id}}">
                 </div>
-                <input type="submit" value="Add listing">
+                <input type="submit" value="Add Listing"
+                    class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-700">
             </form>
-            {% with messages = get_flashed_messages() %}
-            {% if messages %}
-            {% for message in messages %}
-            <p>{{ message }}</p>
-            {% endfor %}
-            {% endif %}
-            {% endwith %}
         </div>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <div class="text-center mt-4">
+            {% for message in messages %}
+            <p class="text-red-500">{{ message }}</p>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endwith %}
     </div>
+
 </body>
 
 </html>

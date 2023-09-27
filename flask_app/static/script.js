@@ -22,7 +22,7 @@ async function fetchNutritionData(measurement, foodItem) {
       const fats = nutritionData.totalNutrients.FAT.quantity.toFixed(2)
       const protein = nutritionData.totalNutrients.PROCNT.quantity.toFixed(2)
       const nutritionInfoHTML = `
-        <h2>Nutrition Information</h2>
+        <h2>Nutritional Information</h2>
         <p>Calories: ${calories}</p>
         <p>Total CO2 Emissions: ${totalCO2Emissions}</p>
         <p>Total Weight: ${totalWeight} g</p>
