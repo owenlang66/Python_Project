@@ -15,3 +15,7 @@ Sustainable Surplus was designed as a way to offload excess produce created by l
 This project was designed to showcase basic CRUD functionality, as well as Front End development with Tailwind and external Javascript API calls
 
 I hope you enjoy! 
+
+![Screenshot (249)](https://github.com/owenlang66/Sustainable_Surplus/assets/135743320/aeab08e3-f60a-4e23-a775-7acd0e71ef02)
+![Screenshot (250)](https://github.com/owenlang66/Sustainable_Surplus/assets/135743320/21a65a20-e7b2-4cb5-9b5d-257078373da6)
+![Screenshot (251)](https://github.com/owenlang66/Sustainable_Surplus/assets/135743320/c61af1e9-8c72-4518-b797-56c790eacaaf)
