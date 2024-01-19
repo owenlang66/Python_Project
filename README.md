@@ -1,5 +1,4 @@
 # Sustainable Surplus
-Project for Python Stack within Coding Dojo
 
 ## About
 Sustainable Surplus was designed as a way to offload excess produce created by local farms (specifically Community Supported Agriculture) so that as little goes to waste as possible, while providing more access to those who cannot afford a full CSA. CSA's are designed to bring easier access to local produce for communities, increasing the awareness and demand for locally sourced food. However, having been a part of many small growers, overproduction can be a major issue when the demand is not always known. Sustainable Surplus was created to minimize any possible waste that comes from that overflow. 
