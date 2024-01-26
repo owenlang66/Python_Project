@@ -59,7 +59,7 @@ class User:
             flash("This email is already in use", "error_users_email")
             is_valid = False
         return is_valid
-
+ 
 
 
 
