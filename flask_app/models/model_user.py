@@ -30,7 +30,7 @@ class User:
         if len(user['last_name']) < 3:
             flash("Last name must be at least 3 characters", "error_users_last_name")
             is_valid = False
-
+ 
         # print(user['email'])
         if len(user['email']) < 5:
             flash("Email must be at least 5 characters", "error_users_email")
