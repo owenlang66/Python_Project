@@ -20,7 +20,7 @@ class User:
         self.updated_at = data['updated_at']
 
 
-
+ 
     def validate_user(user):
         is_valid = True
         if len(user['first_name']) < 3:
