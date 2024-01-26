@@ -28,10 +28,6 @@ class Listing:
             flash("All fields must be filled")
             is_valid = False
 
-        # if len(listing['date']) < 1:
-        #     flash("All fields must be filled")
-        #     is_valid = False
-
         if len(listing['weight']) < 0:
             flash("All fields must be filled")
             is_valid = False
